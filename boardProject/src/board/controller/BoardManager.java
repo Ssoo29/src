@@ -21,13 +21,14 @@ public class BoardManager {
 				System.out.println(list.add(i, b[i]);
 			}*/
 
-			list = (ArrayList<Board>) objin.readObject();
+			Board b = (Board)objin.readObject();
+			list.add(b);
 			
 			/*for(int i = 0; i < list.size(); i++) {
 				Board b1 = (Board)objin.;*/
 			
 	} catch (FileNotFoundException e) {
-	System.out.println("board_list ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.");}
+	System.out.println("board_list íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.");}
 	 catch (Exception e) {
 	e.printStackTrace();}
 
@@ -36,14 +37,14 @@ public class BoardManager {
 	 
 	 public void writeBoard() {
 			
-			System.out.println("»õ °Ô½Ã±Û ¾²±â ÀÔ´Ï´Ù.");
-			System.out.print("±Û Á¦¸ñ : ");
+			System.out.println("ìƒˆ ê²Œì‹œê¸€ ì“°ê¸° ìž…ë‹ˆë‹¤.");
+			System.out.print("ê¸€ ì œëª© : ");
 			String boardTitle = sc.nextLine();
-			System.out.print("ÀÛ¼ºÀÚ : ");
+			System.out.print("ìž‘ì„±ìž : ");
 			String boardWriter = sc.next();
-			sc.nextLine();  //¹öÆÛÀÇ ¿£ÅÍÅ° Á¦°Å
+			sc.nextLine();  //ë²„í¼ì˜ ì—”í„°í‚¤ ì œê±°
 			Date today = new Date();
-			System.out.print("±Û ³»¿ë : \n");
+			System.out.print("ê¸€ ë‚´ìš© : \n");
 			StringBuilder sb = new StringBuilder();
 			String line = null;
 			while(!((line = sc.nextLine()).equals("exit"))){
@@ -57,7 +58,7 @@ public class BoardManager {
 	 
 	 public void displayBoard() {
 		 Board b = new Board();
-		 System.out.print("Á¶È¸ÇÒ ±Û¹øÈ£ : ");
+		 System.out.print("ì¡°íšŒí•  ê¸€ë²ˆí˜¸ : ");
 		 int index = sc.nextInt();
 		 System.out.println(list.get(index));
 		 list.get(index).setReadCount(list.get(index).getReadCount() + 1);
@@ -65,7 +66,7 @@ public class BoardManager {
 	 
 	 
 	 public void searchBoard() {
-		 System.out.print("°Ë»öÇÒ Á¦¸ñ : ");
+		 System.out.print("ê²€ìƒ‰í•  ì œëª© : ");
 		 String find = sc.nextLine();
 		 for(int i = 0; i < list.size(); i++) {
 			 if(find.equals(list.get(i).getBoardTitle())) {
@@ -76,23 +77,23 @@ public class BoardManager {
 	 
 	 public void modifyTitle() {
 		 try {
-		 System.out.print("¼öÁ¤ÇÒ ±Û¹øÈ£ : ");
+		 System.out.print("ìˆ˜ì •í•  ê¸€ë²ˆí˜¸ : ");
 		 int boardNo = sc.nextInt();
 		 System.out.println(list.get(boardNo).getBoardContent());
-		 System.out.print("º¯°æÇÒ Á¦¸ñ : ");
+		 System.out.print("ë³€ê²½í•  ì œëª© : ");
 		 sc.nextLine();
 		 String modify = sc.nextLine();
 		 list.get(boardNo).setBoardTitle(modify);
 		 }catch(Exception e) {
-			 System.out.println("Àß¸øµÈ ¼ýÀÚ ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+			 System.out.println("ìž˜ëª»ëœ ìˆ«ìž ìž…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		 }
 	 }
 	 
 	 public void modifyContent() {
-		 System.out.print("¼öÁ¤ÇÒ ±Û¹øÈ£ : ");
+		 System.out.print("ìˆ˜ì •í•  ê¸€ë²ˆí˜¸ : ");
 		 int boardNo = sc.nextInt();
 		 System.out.println(list.get(boardNo).getBoardContent());
-		 System.out.print("º¯°æÇÒ ³»¿ë : \n");
+		 System.out.print("ë³€ê²½í•  ë‚´ìš© : \n");
 		 StringBuilder sb = new StringBuilder();
 		 String line = null;
 		 while(!(line = sc.nextLine()).equals("exit")) {
@@ -101,13 +102,13 @@ public class BoardManager {
 	 }
 	 
 	 public void deleteBoard() {
-		 System.out.print("»èÁ¦ÇÒ ±Û¹øÈ£ : ");
+		 System.out.print("ì‚­ì œí•  ê¸€ë²ˆí˜¸ : ");
 		 int boardNo = sc.nextInt();
 		 System.out.println(list.get(boardNo).getBoardContent());
-		 System.out.println("Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î ? (y/n)");
+		 System.out.println("ì •ë§ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ ? (y/n)");
 		 if(sc.next().toUpperCase().charAt(0) == 'Y')
 			 list.remove(boardNo);
-		 System.out.println(boardNo + "¹ø ±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+		 System.out.println(boardNo + "ë²ˆ ê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 	 }
 	 
 	 public void saveListFile() {
@@ -121,7 +122,7 @@ public class BoardManager {
 					for(int i = 0; i < b.length; i++)
 					list.add(i, b[i]);
 					
-					System.out.println("board_list.dat¿¡ ¼º°øÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù.");
+					System.out.println("board_list.datì— ì„±ê³µì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
