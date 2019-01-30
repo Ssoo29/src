@@ -1,0 +1,7 @@
+tomcat >> D:\devtools\webserver_tools 에 설치
+
+General >> workspace, JSON >> EDITOR >> JSON Files, WEB >> CSS/HTML/JSP  >> 전부 UTF-8
+
+SERVER >> RUNTIME ENVIROMENT >> ADD >> TOMCAT8.5 >> D:\devtools\webserver_tools\apache_tomcat 폴더선택 >> 피니쉬
+
+>> edit >> name을 html test server로 변경. css test server도 동일한 방법으로 한 개 더 생성
